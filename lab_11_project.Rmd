@@ -1,0 +1,41 @@
+---
+title: 'put the title of your project here'
+subtitle: "Lab #11 Report"
+author: "put your name here"
+date: "Due April 20 2020"
+bibliography: "decarbonization.bib" # this line tells RMarkdown which file to use for the bibliography
+fontsize: 12pt
+output: 
+  github_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+    include:
+      in_header: "ees3310.sty" # This line just tells RMarkdown to use a style file to format the PDF file with Times Roman font.
+  html_document:
+    toc: yes
+---
+```{r setup, include=FALSE}
+knitr::knit_hooks$set(inline = function(x) { knitr:::format_sci(x, 'md')})
+knitr::opts_chunk$set(echo = TRUE)
+
+# This section loads necessary R libraries and sources scripts that define 
+# useful functions format_md.
+# 
+data_dir = "_data"
+script_dir = "_scripts"
+
+if (!dir.exists(data_dir)) dir.create(data_dir)
+
+library(pacman)
+
+# Load all of the following packages.
+# Install any missing packages.
+p_load(zoo, scales, tidyverse, lubridate)
+
+# This sets the default style for ggplot
+theme_set(theme_bw(base_size = 15))
+
+# Load basic utility scripts
+source(file.path(script_dir, "utils.R"), chdir = T)
+```
